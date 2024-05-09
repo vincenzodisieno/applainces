@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<body class="container">
+    <ul>
+        <li><img src="./images/logo.png" alt="logo" class="logo"></li>
+        <li><a href="/" class="activepage">Home</a></li>
+        <li><a href="forno">Forno</a></li>
+        <li style="float:right">
+          <button class="animated-button" id="preordina">
+            <span>Preordina</span>
+            <span></span>
+          </button>
+        </li>
+    </ul>
+    <div class="center">  
+        <img src="./images/forno.png" alt="forno" class="forno">
+        <p class="center pre-price">Soltanto a</p>
+        <div class="waviy">
+          <span style="--i:1">9</span>
+          <span style="--i:2">9</span>
+          <span style="--i:3">9</span>
+          <span style="--i:4">€</span>
+        </div>
+        <button id="scopri" class="button">Scopri di più</button>
+    </div>
+    <div class="reveal center">
+      <img src="./images/logo.png" alt="logo" class="logo-grande">
+      <div class="card">
+        <h2>I tuoi elettrodomestici come non li avevi mai visti prima</h2>
+      </div>
+    </div>
+    <div class="container2">
+        <div class="card1">
+          <p class="card-title">Quali sono i nostri obbiettivi?</p>
+          <p class="small-desc">Vogliamo creare un'amplia gamma di elettrodomestici intelligenti per rendere le faccende di casa più facili e divertenti ma non solo. Gli elettrodomestici normali hanno dei consumi e impatto ambientale altissimo, ma i nostri prodotti sono in grado di autoregolarsi per ottenere il migliore risoltato possibile senza sprechi di energia!</p>
+          <div class="go-corner">
+            <div class="go-arrow">→</div>
+          </div>
+        </div>
+      
+        <div class="card2">
+          <p class="card-title">Cosa ci differenzia?</p>
+          <p class="small-desc">I nostri prodotti non sono dei semplici elettrodomestici. Con l'aggiunta di una rete di sensori e l'implementazione dell'intelligenza artificiale, l'esperienza di uso sarà completamente unica! Non solo sarai assistito con le operazioni, ma le tue abitudini verranno imparate, riconosciute e eventualmente corrette, suggerendoti metodi per ottimizzare le tue faccende domestiche!</p>
+          <div class="go-corner">
+            <div class="go-arrow">→</div>
+          </div>
+        </div>
+      
+        <div class="card3">
+          <p class="card-title">Quando saranno disponibili?</p>
+          <p class="small-desc">Il nostro prodotto di lancio è il fornoSmart ed è disponibile al pre-ordine ora! Baseremo la produzione dei nostri prossimi prodotti ascoltando la vostra opinione, quindi compila il form in questione se vuoi aiutarci! Per più informazioni sul fornoSmart invece, clicca qui.</p>
+          <div class="go-corner">
+            <div class="go-arrow">→</div>
+          </div>
+        </div>
+      
+    </div>
+    <footer class="footer">
+      <div class="info center"><p>Gestisci i cookie</p>
+        <p>Contattaci</p>
+        <p>Politiche di privacy</p>
+        <p>Politiche di reso</p>
+        <p>Garanzia</p>
+      </div>
+      <div class="center logo">
+        <img src="./images/logo.png" alt="logo">
+      </div>
+      </footer>
+    <script>
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+      
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight
+          var elementTop = reveals[i].getBoundingClientRect().top
+          var elementVisible = 150
+      
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active")
+          } else {
+            reveals[i].classList.remove("active")
+          }
+        }
+      }
+      function scopri(){
+        window.location.href = 'forno'
+      }
+      document.getElementById('scopri').addEventListener('click', scopri)
+      window.addEventListener("scroll", reveal)
+
+      $(function(){
+      $('.animated-button').click(function(){
+        window.location.href = 'preordina'
+      })
+    })
+    </script>
+</body>
+</html>

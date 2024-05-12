@@ -5,8 +5,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
-    <div class="container4 row2">
+<body class="container4">
+    <div class="row2">
+      <button class="buttonback">
+        Torna alla Home
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+          <path
+            clip-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
       <div class="payment-form">
         <div class="modal">
             <form class="form" action="/preordina" method="post">
@@ -216,12 +226,16 @@
 
         $('form').submit(async function(){
           event.preventDefault()
-          $('.payment-form, .card-col').hide()
+          $('.payment-form, .card-col, .buttonback').hide()
           $('.lavatrice').show()
 
-          await new Promise(resolve => setTimeout(resolve, 5000))
+          await new Promise(resolve => setTimeout(resolve, 3500))
 
           this.submit()
+        })
+
+        $('.buttonback').click(function(){
+          window.location.href = '/'
         })
       })
     </script>

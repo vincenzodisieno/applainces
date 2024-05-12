@@ -4,7 +4,6 @@ $.support.cors = true;
 $.ajaxSettings.xhr = function () {
 	return new XMLHttpRequest;
 }
-
 const express = require('express')
 const ejs = require('ejs')
 const app = express()
@@ -20,7 +19,7 @@ app.get('/', (req, res) =>{
 
 app.get('/forno', (req, res) =>{
     let percentualeraccolta
-    $.ajax('http://php_container:80/numeropreordini.php', {
+    $.ajax('http://php_container/numeropreordini.php', {
             async: false,
             type: 'GET',
             complete: function(response){
@@ -35,12 +34,17 @@ app.route('/preordina')
         res.sendFile('preordina.html', {root: __dirname + '/public'})
     })
     .post(async function(req, res){
-        $.ajax('http://php_container:80/aggiungi.php', {
+        $.ajax('http://php_container/aggiungi.php', {
             async: false,
             type: 'POST',
             data: req.body,
             complete: function(response){
-                res.send('aggiunto')
+                if(response.responseText == 1){
+                    res.render('conferma', { successo: 'block', errore: 'none'})
+                }
+                else{
+                    res.render('conferma', { errore: 'block', successo: 'none'})
+                }
             }
         })
     })

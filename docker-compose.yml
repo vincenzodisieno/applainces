@@ -1,31 +1,30 @@
 version: '3'
 services:
-  node:
-    container_name: node_container
-    image: node_image
+  servizionode:
     build: ./node
+    container_name: node_container
+    image: servizionode
     ports:
       - 8080:8080
     networks:
       - rete
-  mysql:
-    container_name: mysql_container
-    image: mysql_image
+  serviziomysql:
     build: ./mysql
+    container_name: mysql_container
+    image: serviziomysql
     networks:
       - rete
     volumes:
       - volumesql:/var/lib/mysql
-  php:
-    container_name: php_container
-    image: php_image
+  serviziophp:
     build: ./php
+    container_name: php_container
+    image: serviziophp
     networks:
       - rete
 networks:
   rete:
     name: rete
-    external: true
 volumes:
   volumesql:
     name: volumesql
